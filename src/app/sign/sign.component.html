@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="avatar" (click)="fileInput.click()">
+                <input #fileInput type="file" style="display: none" (change)="onFileSelected($event)">
+                <img *ngIf="imageUrl" [src]="imageUrl" class="avatar-image">
+                <mat-icon class="icon">account_circle</mat-icon>
+    
+            </div>
+            <p>LOGIN</p>
+        </div>
+        <form action="">
+            <div class="contentOne">
+                <input type="text" placeholder="Entrez votre nom">
+                <input type="text" placeholder="Entrez votre prenom">
+                <input type="email" placeholder="Entrez votre email">
+                
+            </div>
+            <div class="contentTwo">
+                <input type="text" placeholder="Entrez votre numero tel">
+                <input type="password" placeholder="Entrez votre password">
+                <input type="password" placeholder="Confirmez votre password">
+            </div>
+            <div class="formbutton">
+                <button  class="firstB">Soumettre</button>
+                <p>or connect with</p>
+                <div class="connectPart">
+                    <button><i class="material-icons">mail</i></button>
+                    <button><i class="material-icons">facebook</i></button>
+                    
+                </div>
+                <p> <i> i don't have an account <span (click)="goToLogin()">Login</span></i></p>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

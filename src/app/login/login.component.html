@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="avatar" (click)="fileInput.click()">
+                <input #fileInput type="file" style="display: none" (change)="onFileSelected($event)">
+                <img *ngIf="imageUrl" [src]="imageUrl" class="avatar-image">
+                <mat-icon class="icon">account_circle</mat-icon>
+    
+            </div>
+            <p>LOGIN</p>
+        </div>
+        <!-- email-password-form.component.html -->
+    
+        <form [formGroup]="emailPasswordForm" (ngSubmit)="onSubmit()">
+            <div class="content">
+                <div>
+                    <label for="email"></label>
+                    <input type="email" id="email" formControlName="email" placeholder="Entrez votre email">
+                    <div *ngIf="emailPasswordForm.get('email')?.errors && emailPasswordForm.get('email')?.touched">
+                        <div *ngIf="emailPasswordForm.get('email')?.hasError('required')" class="verification">Email requis</div>
+                        <div *ngIf="emailPasswordForm.get('email')?.hasError('email')" class="verification">Email invalide</div>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="password"></label>
+                    <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
+                    <div *ngIf="emailPasswordForm.get('password')?.errors && emailPasswordForm.get('password')?.touched">
+                        <div *ngIf="emailPasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="formbutton">
+                <button  class="firstB">Soumettre</button>
+                <p>or connect with</p>
+                <div class="connectPart">
+                    <button><i class="material-icons">mail</i></button>
+                    <button><i class="material-icons">facebook</i></button>
+                    
+                </div>
+                <p> <i> i don't have an account <span (click)="goToSign()">Sign Up</span></i></p>
+            </div>
+        </form>
+    
+    
+    </main>
+    
+</body>
+</html>

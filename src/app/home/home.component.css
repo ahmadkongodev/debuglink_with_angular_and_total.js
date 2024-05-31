@@ -1,0 +1,98 @@
+/* Styles de base */
+ 
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Permet à main de prendre tout l'espace disponible */
+}
+
+header h1 {
+    color: orange;
+}
+
+header p {
+    font-size: small;
+    margin-left: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+.welcome {
+    margin-top: 100px;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    color: white;
+}
+
+.logText {
+    margin-top: 80px;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+}
+
+.logbuttom {
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centrer les boutons */
+    flex-wrap: wrap; /* Permettre aux boutons de passer à la ligne suivante si nécessaire */
+}
+
+.logbuttom button {
+    margin: 40px;
+    width: 200px;
+    height: 50px;
+    color: white;
+    background: linear-gradient(to bottom, rgba(1, 20, 53, 1), rgba(1, 56, 132, 1));
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Media Queries pour les petits écrans */
+@media (max-width: 768px) {
+    .welcome {
+        font-size: x-large; /* Réduction de la taille de police pour les petits écrans */
+        margin-top: 50px; /* Réduction de la marge supérieure */
+    }
+
+    .logText {
+        font-size: large; /* Réduction de la taille de police pour les petits écrans */
+        margin-top: 40px; /* Réduction de la marge supérieure */
+    }
+
+    .logbuttom button {
+        margin: 20px; /* Réduction de la marge pour les petits écrans */
+        width: 150px; /* Réduction de la largeur du bouton */
+        height: 40px; /* Réduction de la hauteur du bouton */
+        font-size: 14px; /* Réduction de la taille de police */
+    }
+}
+
+/* Media Queries pour les très petits écrans */
+@media (max-width: 480px) {
+    .welcome {
+        font-size: large; /* Réduction de la taille de police pour les très petits écrans */
+        margin-top: 30px; /* Réduction de la marge supérieure */
+    }
+
+    .logText {
+        font-size: medium; /* Réduction de la taille de police pour les très petits écrans */
+        margin-top: 20px; /* Réduction de la marge supérieure */
+    }
+
+    .logbuttom button {
+        margin: 10px; /* Réduction de la marge pour les très petits écrans */
+        width: 120px; /* Réduction de la largeur du bouton */
+        height: 35px; /* Réduction de la hauteur du bouton */
+        font-size: 12px; /* Réduction de la taille de police */
+    }
+}
