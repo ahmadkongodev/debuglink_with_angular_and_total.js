@@ -1,0 +1,62 @@
+.side-menu {
+    background-color: #0A1931; /* Couleur de fond bleu foncé */
+    color: #fff; /* Couleur du texte blanche */
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    z-index: 1001;
+    overflow-y: auto; /* Pour permettre le défilement si le contenu dépasse la hauteur */
+  }
+  
+  .menu-section {
+    margin-bottom: 2em;
+  }
+  
+  .menu-section h3 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  .menu-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-section ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+  }
+  
+  .menu-section ul li mat-icon {
+    margin-right: 16px;
+    color: #FFD700; /* Couleur des icônes */
+  }
+  
+  .menu-section ul li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond au survol */
+    border-radius: 4px;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  /* Styles pour le texte */
+  .menu-section ul li span {
+    font-size: 16px;
+    color: #fff; /* Couleur du texte */
+  }
+  

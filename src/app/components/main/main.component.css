@@ -1,0 +1,131 @@
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.menu-icon {
+    cursor: pointer;
+    font-size: 2em;
+    
+    color: white;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+}
+
+.search-create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.search-create input {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    width: 70%;
+}
+
+.search-create button {
+    padding: 1em 1em;
+    border-radius: 5px;
+    border: none;
+    background-color: #1E2A78;
+    color: white;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+th,
+td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: 2px solid #868fce;;
+}
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  /* Styles pour l'icône */
+  button mat-icon {
+    color: white;
+    font-size: 24px;
+  }
+/* th {
+    background-color: #0A1931;
+}
+
+tr:nth-child(even) {
+    background-color: #0A1931;
+} */
+
+/* Réinitialisation de la liste */
+.men {
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Utilisation de flexbox */
+    justify-content: center;
+    /* Alignement horizontal au centre */
+}
+
+/* Style des liens */
+.men li {
+    margin-right: 100px;
+    /* Espacement entre les éléments */
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.men li:last-child {
+    margin-right: 0;
+    /* Aucun espacement à droite pour le dernier élément */
+}
+
+/* .men li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+} */
+
+.men li a:hover {
+    background-color: #f0f0f0;
+}
+
+.men li.active a {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.men li.active a:hover {
+    background-color: #0056b3;
+}

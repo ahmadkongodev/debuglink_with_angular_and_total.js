@@ -1,0 +1,35 @@
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: #0A1539;
+    color: white;
+  }
+  
+  .about-content {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1B2E61;
+    border-radius: 8px;
+    width: 80%;
+  }
+  strong {
+    color: orange;
+  }
+  .contact-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #0A1539;
+    color: white;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .phone-numbers {
+    font-size: 18px;
+  }
+  

@@ -1,0 +1,47 @@
+
+   <div class="container">
+    <header>
+      <div class="menu-icon" (click)="toggleMenu()">&#9776;</div>
+      <ul class="men">
+        <li>Profil</li>
+        <li>About Us</li>
+        <li class="active">My Debug Links</li>
+      </ul>
+      <div class="profile-pic"> <!-- Ajoute ici l'image de profil --> </div>
+    </header>
+    <main>
+      <div class="search-create">
+        <input type="text" placeholder="search by name or category............" />
+        <button (click)="openLinkForm()">Create links</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>URL</th>
+            <th>Hashtag</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let link of links">
+            <td>{{ link.id }}</td>
+            <td>{{ link.name }}</td>
+            <td>{{ link.category }}</td>
+            <td>{{ link.url }}</td>
+            <td>{{ link.hashtag }}</td>
+            <td>            <button (click)="deleteLink(link.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+  
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <app-side-menu *ngIf="isMenuOpen"></app-side-menu>
+  <app-link-form *ngIf="isFormOpen" (formClosed)="closeLinkForm()"></app-link-form>
+  

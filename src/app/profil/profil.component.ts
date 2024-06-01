@@ -5,14 +5,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-login',
+  selector: 'app-profil',
   standalone: true,
   imports: [MatIconModule, CommonModule, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './profil.component.html',
+  styleUrl: './profil.component.css'
 })
-export class LoginComponent {
+export class ProfilComponent {
   imageUrl: string | ArrayBuffer | null = null;
   emailPasswordForm: FormGroup;
 
@@ -44,13 +45,5 @@ export class LoginComponent {
     }
   }
 
-  goToSign() {
-    this.router.navigate(['/sign']);
-  }
-
   
-
-  goToMain() {
-    this.router.navigate(['/main']);
-  }
 }

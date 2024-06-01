@@ -1,0 +1,54 @@
+<div class="overlay" (click)="closeMenu()" *ngIf="menuOpen"></div>
+<div class="side-menu" *ngIf="menuOpen">
+  <h2>Menu</h2>
+  <div class="menu-section">
+    <h3>Options</h3>
+    <ul>
+      <li>
+        <mat-icon>person</mat-icon>
+        <!-- <span (click)="navigateToProfile()">Profil</span> -->
+        <span (click)="goToProfil()" >Profil</span>
+
+      </li>
+      <li>
+        <mat-icon>link</mat-icon>
+        <span>My Debug Links</span>
+      </li>
+    </ul>
+  </div>
+  <div class="menu-section">
+    <h3>Communication</h3>
+    <ul>
+      <li>
+        <mat-icon>phone</mat-icon>
+        <span>Contact Us</span>
+      </li>
+      <li>
+        <mat-icon>star</mat-icon>
+        <span>Notez-nous</span>
+      </li>
+      <li>
+        <mat-icon>share</mat-icon>
+        <span>Share</span>
+      </li>
+      <li>
+        <mat-icon>info</mat-icon>
+        <span (click)="goToAbout()" >About Us</span>
+      </li>
+      <li>
+        <mat-icon>brightness_6</mat-icon>
+        <span>Changer de mode</span>
+      </li>
+    </ul>
+  </div>
+  <div class="menu-section">
+    <h3>Compte</h3>
+    <ul>
+      <li>
+        <mat-icon>logout</mat-icon>
+        <span>LogOut</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<button (click)="openMenu()">Open Menu</button>
