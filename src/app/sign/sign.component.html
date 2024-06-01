@@ -16,11 +16,28 @@
             </div>
             <p>LOGIN</p>
         </div>
-        <form action="">
+        <form [formGroup]="emailPasswordForm" (ngSubmit)="onSubmit()">
             <div class="contentOne">
-                <input type="text" placeholder="Entrez votre username">
+                <div>
+                    <label for="username"></label>
+                    <input type="text" id="username" formControlName="username" placeholder="Entrez votre nom d'utilisateur">
+                    <div *ngIf="emailPasswordForm.get('username')?.errors && emailPasswordForm.get('username')?.touched">
+                        <div *ngIf="emailPasswordForm.get('username')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
+                        <div *ngIf="emailPasswordForm.get('username')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="password"></label>
+                    <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
+                    <div *ngIf="emailPasswordForm.get('password')?.errors && emailPasswordForm.get('password')?.touched">
+                        <div *ngIf="emailPasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
+                    </div>
+                </div>
+
+                <!-- <input type="text" placeholder="Entrez votre username">
                 <input type="text" placeholder="Entrez votre password">
-                <input type="email" placeholder="Confirmez votre password">
+                <input type="email" placeholder="Confirmez votre password"> -->
                 
             </div>
             

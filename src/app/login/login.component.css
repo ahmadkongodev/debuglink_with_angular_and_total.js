@@ -54,7 +54,7 @@ body {
     gap: 20px;
 }
 
-.content input[type="email"],
+.content input[type="text"],
 .content input[type="password"] {
   width: 300px; /* Largeur des champs */
   height: 40px; /* Hauteur des champs */

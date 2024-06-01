@@ -53,11 +53,8 @@ body {
     gap: 50px;
 }
 
-.contentOne input[type="email"],
-.contentTwo input[type="password"],
-.contentOne input[type="text"],
-.contentTwo input[type="text"]
- {
+.contentOne input[type="password"],
+.contentOne input[type="text"]{
   width: 300px; /* Largeur des champs */
   height: 40px; /* Hauteur des champs */
   border-radius: 15px;

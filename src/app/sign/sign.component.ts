@@ -2,16 +2,36 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-sign',
   standalone: true,
-  imports: [MatIconModule,CommonModule],
+  imports: [MatIconModule,CommonModule, ReactiveFormsModule],
   templateUrl: './sign.component.html',
   styleUrl: './sign.component.css'
 })
 export class SignComponent {
   imageUrl: string | ArrayBuffer | null = null;
+  emailPasswordForm: FormGroup;
 
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.emailPasswordForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      
+      password: ['', Validators.required]
+    });
+  }
+  onSubmit() {
+    if (this.emailPasswordForm.valid) {
+      // Faites quelque chose avec les données du formulaire
+      console.log(this.emailPasswordForm.value);
+    } else {
+      // Gérer les cas d'erreur ou les champs non valides
+      console.log("Le formulaire n'est pas valide.");
+    }
+  }
+  
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -22,7 +42,9 @@ export class SignComponent {
       };
     }
   }
-  constructor(private router: Router) {}
+  
+
+  
 
   goToLogin() {
     this.router.navigate(['/login']);
