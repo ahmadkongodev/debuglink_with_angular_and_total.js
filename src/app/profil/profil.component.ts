@@ -47,6 +47,7 @@ export class ProfilComponent {
   logout() {
     //
     this.service.logout().subscribe((res: any) => {
+      console.log("logout", res)
       if (res.success) {
         //supprimer token au logout
         localStorage.removeItem('token');

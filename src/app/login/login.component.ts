@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DebuglinkService } from '../service/debuglink.service';
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -59,7 +58,7 @@ export class LoginComponent {
       }
       else {
         alert("erreur")
-        alert(res[0]["error"])
+        alert(res[0])
       }
     });
   }

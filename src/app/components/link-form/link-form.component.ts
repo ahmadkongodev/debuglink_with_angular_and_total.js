@@ -32,6 +32,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Link } from '../../models/link';
 import { DebuglinkService } from '../../service/debuglink.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-link-form',
@@ -45,7 +46,7 @@ export class LinkFormComponent {
   linkValidator: FormGroup;
   link= new Link("","","",[]);
 
-  constructor(private router: Router,private formBuilder: FormBuilder, private service: DebuglinkService){
+  constructor(private router: Router,private formBuilder: FormBuilder, private service: DebuglinkService, private toast: ToastrService){
     this.linkValidator=this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       
@@ -76,7 +77,7 @@ export class LinkFormComponent {
 
        
           this.closeForm();
-          alert("lien creer avec succes")
+           this.toast.success("lien creer avec succes")
           //rafraichir la page apres inserrtion
           this.router.navigate(['/main']).then(() => {
             window.location.reload();
@@ -84,13 +85,15 @@ export class LinkFormComponent {
 
         }
         else{
-          alert("erreur lors de l'insertion")
-        }
-
-      });
-    } else {
-      // Gérer les cas d'erreur ou les champs non valides
-      alert("Le formulaire n'est pas valide.");
-    }
+          
+           this.toast.error("erreur lors de l'insertion")
+           
+          }
+          
+        });
+      } else {
+        // Gérer les cas d'erreur ou les champs non valides
+        this.toast.error("Le formulaire n'est pas valide.")
+     }
   }
 }

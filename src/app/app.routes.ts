@@ -8,7 +8,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { authentificationGuard } from './authguard/authentification.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { authGuard } from './authguard/auth.guard';
-
+ 
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' }, //page par defaut  
@@ -18,5 +18,5 @@ export const routes: Routes = [
     { path: 'main', component: MainPageComponent, canActivate: [authentificationGuard]},
     { path: 'about', component: AboutUsComponent, canActivate: [authentificationGuard]},
     { path: 'profil', component: ProfilComponent, canActivate: [authentificationGuard]},
-    { path: '**', component: PagenotfoundComponent },
+     { path: '**', component: PagenotfoundComponent },
 ];

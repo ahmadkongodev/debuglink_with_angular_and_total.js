@@ -3,7 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DebuglinkService } from '../service/debuglink.service';
+import { DebuglinkService } from '../service/debuglink.service'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign',
@@ -16,7 +17,7 @@ export class SignComponent {
   imageUrl: string | ArrayBuffer | null = null;
   usernamePasswordForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService, private toast: ToastrService) {
     this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
 
@@ -50,13 +51,15 @@ export class SignComponent {
   signIn() {
     this.service.onSignIn(this.usernamePasswordForm.value).subscribe((res: any) => {
       if (res.success) {
+
         localStorage.setItem('token', res.value);
         console.log('token:',localStorage.getItem('token'));
+        
         this.router.navigate(['/main']);
+
       }
       else {
-        alert("erreur")
-        alert(res[0]["error"])
+        this.toast.error("an error occured");
       }
     });
   }
