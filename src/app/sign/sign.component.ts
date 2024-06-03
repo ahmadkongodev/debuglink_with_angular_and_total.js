@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SignComponent {
   imageUrl: string | ArrayBuffer | null = null;
   usernamePasswordForm: FormGroup;
-
+  showPassword = false;
   constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService, private toast: ToastrService) {
     this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -66,5 +66,8 @@ export class SignComponent {
 
   goToLogin() {
     this.router.navigate(['/login']);
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

@@ -15,7 +15,7 @@ import { DebuglinkService } from '../service/debuglink.service';
 export class LoginComponent {
   imageUrl: string | ArrayBuffer | null = null;
   usernamePasswordForm: FormGroup;
-
+  showPassword = false;
   constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService) {
     this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -56,14 +56,13 @@ export class LoginComponent {
         console.log('token:',localStorage.getItem('token'));
         this.router.navigate(['/main']);
       }
-      else {
-        alert("erreur")
-        alert(res[0])
-      }
+       
     });
   }
 
-  
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   goToSign() {
     this.router.navigate(['/sign']);

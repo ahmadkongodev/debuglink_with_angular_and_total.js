@@ -32,19 +32,21 @@ export const intercepteurdebuglinkInterceptor: HttpInterceptorFn = (req, next) =
       }
       if (err.status == 404) {
 
-        errorMessage = 'link not found';
+        errorMessage = ' not found';
+        toast.error(errorMessage,"error");
       }
       else if (err.status === 500) {
         errorMessage = 'Internal server error';
+        toast.error(errorMessage,"error");
       }
       else if (err.status === 400) {
-        errorMessage = 'Unauthorized';
-alert(errorMessage)
+        errorMessage = "ce compte n'existe pas";
+toast.error(errorMessage,"error");
 
-        console.log(errorMessage)
-      }
-      else {
-        errorMessage = 'An error occurred';
+}
+else {
+  errorMessage = 'An error occurred';
+  toast.error(errorMessage,"error");
         
       }
  

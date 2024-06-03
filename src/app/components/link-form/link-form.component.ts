@@ -93,7 +93,7 @@ export class LinkFormComponent {
         });
       } else {
         // Gérer les cas d'erreur ou les champs non valides
-        this.toast.error("Le formulaire n'est pas valide.")
+        this.toast.error("Veuillez remplir tous les champs")
      }
   }
 }

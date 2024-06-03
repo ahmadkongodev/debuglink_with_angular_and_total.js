@@ -22,7 +22,7 @@ import { DebuglinkService } from '../../service/debuglink.service';
 
 export class MainPageComponent {
 
-  constructor( private service: DebuglinkService){}
+  constructor( private service: DebuglinkService, private router: Router){}
   menuOpen = false;
   searchTerm= '';
   isMenuOpen = false;
@@ -33,9 +33,7 @@ export class MainPageComponent {
     //recuperer les informations lors de l'initialisation du composant
     this.getLinks();
   }
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
+   
   closemenu() {
     this.menuOpen = false;
   }
@@ -72,6 +70,11 @@ export class MainPageComponent {
       }
     }); 
   }
-
+  goToAbout() {
+    this.router.navigate(['/about']);
+  }
+  goToProfil() {
+    this.router.navigate(['/profil']);
+  }
   
 }

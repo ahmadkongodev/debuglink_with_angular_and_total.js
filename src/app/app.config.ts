@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideToastr(
     {
       closeButton: true,
-      timeOut: 1000,
+      timeOut: 5000,
       positionClass: "toast-center-center"
     }
   ),

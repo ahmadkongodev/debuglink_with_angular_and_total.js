@@ -1,18 +1,17 @@
 
    <div class="container">
     <header>
-      <div class="menu-icon" (click)="toggleMenu()">&#9776;</div>
-      <ul class="men">
-        <li>Profil</li>
-        <li>About Us</li>
-        <li class="active">My Debug Links</li>
+       <ul class="men">
+        <li (click)="goToProfil()">Profil</li>
+        <li (click)="goToAbout()">About  </li>
+        <li class="active">Home</li>
       </ul>
       <div class="profile-pic"> <!-- Ajoute ici l'image de profil --> </div>
     </header>
     <main>
       <div class="search-create">
         <input type="text" [(ngModel)]="searchTerm" (keypress)="search()" placeholder="search by name or category............" />
-        <button (click)="openLinkForm()">Create links</button>
+        <button (click)="openLinkForm()">Create link</button>
       </div>
       <table>
         <thead>
