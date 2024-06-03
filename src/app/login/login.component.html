@@ -19,28 +19,28 @@
         </div>
         <!-- email-password-form.component.html -->
     
-        <form [formGroup]="emailPasswordForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="usernamePasswordForm" (ngSubmit)="onSubmit()">
             <div class="content">
 
                 <div>
                     <label for="username"></label>
                     <input type="text" id="username" formControlName="username" placeholder="Entrez votre nom d'utilisateur">
-                    <div *ngIf="emailPasswordForm.get('username')?.errors && emailPasswordForm.get('username')?.touched">
-                        <div *ngIf="emailPasswordForm.get('username')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
-                        <div *ngIf="emailPasswordForm.get('username')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
+                    <div *ngIf="usernamePasswordForm.get('username')?.errors && usernamePasswordForm.get('username')?.touched">
+                        <div *ngIf="usernamePasswordForm.get('username')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
+                        <div *ngIf="usernamePasswordForm.get('username')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
                     </div>
                 </div>
     
                 <div>
                     <label for="password"></label>
                     <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
-                    <div *ngIf="emailPasswordForm.get('password')?.errors && emailPasswordForm.get('password')?.touched">
-                        <div *ngIf="emailPasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
+                    <div *ngIf="usernamePasswordForm.get('password')?.errors && usernamePasswordForm.get('password')?.touched">
+                        <div *ngIf="usernamePasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
                     </div>
                 </div>
             </div>
             <div class="formbutton">
-                <button  class="firstB" (click)="goToMain()">Soumettre</button>
+                <button  class="firstB" (click)="login()">Soumettre</button>
                 <p>or connect with</p>
                 <div class="connectPart">
                     <button><i class="material-icons">mail</i></button>

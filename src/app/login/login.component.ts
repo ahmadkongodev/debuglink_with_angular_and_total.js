@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DebuglinkService } from '../service/debuglink.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   imageUrl: string | ArrayBuffer | null = null;
-  emailPasswordForm: FormGroup;
+  usernamePasswordForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
-    this.emailPasswordForm = this.formBuilder.group({
+  constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService) {
+    this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       
       password: ['', Validators.required]
@@ -36,22 +37,37 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.emailPasswordForm.valid) {
+    if (this.usernamePasswordForm.valid) {
       // Faites quelque chose avec les données du formulaire
-      console.log(this.emailPasswordForm.value);
+      console.log(this.usernamePasswordForm.value);
+
+      
     } else {
       // Gérer les cas d'erreur ou les champs non valides
-      console.log("Le formulaire n'est pas valide.");
+      alert("Le formulaire n'est pas valide.");
     }
+    
   }
 
-  goToSign() {
-    this.router.navigate(['/sign']);
+  login() {
+     
+    this.service.onLogin(this.usernamePasswordForm.value).subscribe((res: any) => {
+      if (res.success) { 
+        localStorage.setItem('token', res.value);
+        console.log('token:',localStorage.getItem('token'));
+        this.router.navigate(['/main']);
+      }
+      else {
+        alert("erreur")
+        alert(res[0]["error"])
+      }
+    });
   }
 
   
 
-  goToMain() {
-    this.router.navigate(['/main']);
+  goToSign() {
+    this.router.navigate(['/sign']);
+    
   }
 }

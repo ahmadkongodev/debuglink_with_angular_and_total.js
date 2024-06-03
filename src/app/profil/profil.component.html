@@ -19,24 +19,14 @@
         </div>
         <!-- email-password-form.component.html -->
     
-        <form [formGroup]="emailPasswordForm" (ngSubmit)="onSubmit()">
+        <form  (ngSubmit)="logout()">
             <div class="content">
                 <div>
-                    <label for="email"></label>
-                    <input type="email" id="email" formControlName="email" placeholder="Entrez votre username">
-                    <div *ngIf="emailPasswordForm.get('email')?.errors && emailPasswordForm.get('email')?.touched">
-                        <div *ngIf="emailPasswordForm.get('email')?.hasError('required')" class="verification">Email requis</div>
-                        <div *ngIf="emailPasswordForm.get('email')?.hasError('email')" class="verification">Email invalide</div>
-                    </div>
+                    <p class="username">Username : {{getUsername}}</p>
+                     
                 </div>
     
-                <div>
-                    <label for="password"></label>
-                    <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
-                    <div *ngIf="emailPasswordForm.get('password')?.errors && emailPasswordForm.get('password')?.touched">
-                        <div *ngIf="emailPasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
-                    </div>
-                </div>
+                 
             </div>
             <div class="formbutton">
                 <button  class="firstB">Se Deconnecter</button>

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DebuglinkService } from '../service/debuglink.service';
 
 
 @Component({
@@ -15,13 +15,14 @@ import { Router } from '@angular/router';
 })
 export class ProfilComponent {
   imageUrl: string | ArrayBuffer | null = null;
-  emailPasswordForm: FormGroup;
+  public getUsername: any;
+  constructor(private router: Router, private service: DebuglinkService) {
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
-    this.emailPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
+  }
+
+  ngOnInit() {
+    //recuperer les informations lors de l'initialisation du composant
+    this.loadUserInformation();
   }
 
   onFileSelected(event: any) {
@@ -35,15 +36,25 @@ export class ProfilComponent {
     }
   }
 
-  onSubmit() {
-    if (this.emailPasswordForm.valid) {
-      // Faites quelque chose avec les données du formulaire
-      console.log(this.emailPasswordForm.value);
-    } else {
-      // Gérer les cas d'erreur ou les champs non valides
-      console.log("Le formulaire n'est pas valide.");
-    }
+  //methode pour recuperer les info de l'utilisateur
+  loadUserInformation() {
+
+    this.service.getProfile().subscribe((res: any) => {
+      this.getUsername = res.username
+
+    })
+  }
+  logout() {
+    //
+    this.service.logout().subscribe((res: any) => {
+      if (res.success) {
+        //supprimer token au logout
+        localStorage.removeItem('token');
+        console.log('token:', localStorage.getItem('token'));
+        this.router.navigate(['/login']);
+      }
+    })
   }
 
-  
+
 }

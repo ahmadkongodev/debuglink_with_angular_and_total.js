@@ -11,32 +11,24 @@
     </header>
     <main>
       <div class="search-create">
-        <input type="text" placeholder="search by name or category............" />
+        <input type="text" [(ngModel)]="searchTerm" (keypress)="search()" placeholder="search by name or category............" />
         <button (click)="openLinkForm()">Create links</button>
       </div>
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+           
             <th>Name</th>
             <th>Category</th>
-            <th>URL</th>
-            <th>Hashtag</th>
-            <th>Actions</th>
-          </tr>
+             <th>Hashtags</th>
+           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let link of links">
-            <td>{{ link.id }}</td>
-            <td>{{ link.name }}</td>
-            <td>{{ link.category }}</td>
-            <td>{{ link.url }}</td>
-            <td>{{ link.hashtag }}</td>
-            <td>            <button (click)="deleteLink(link.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-  
-            </td>
+              <td > <a href= "{{ link.link}}" target="_blank"> {{ link.name }}</a></td>
+            <td> <a href="{{ link.link}}"> {{ link.category }}</a> </td>
+            <td> <a href="{{ link.link}}"> {{ link.hashtags }}</a> </td>
+             
           </tr>
         </tbody>
       </table>
