@@ -99,10 +99,90 @@ body {
    font-weight: bold;
 }
 
-
+a:hover{
+cursor: pointer;
+text-decoration: underline;
+}
 .username{
     color: white;
 }
+
+.close-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  nav {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .links-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  nav a {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+  
+  nav a:hover {
+    background-color: var(--accent-color);
+  }
+  
+  nav .home-link {
+    margin-right: auto;
+  }
+  
+  nav svg {
+    fill: white;
+  }
+  
+  #sidebar-active {
+    display: none;
+  }
+  
+  .open-sidebar-button,
+  .close-sidebar-button {
+    display: none;
+  }
+  
+header {
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    }
+.menu-icon {
+    cursor: pointer;
+    font-size: 2em;
+    color: white;
+    display: none;
+    /* Cacher l'icône sur les écrans plus grands */
+}
+
 @media screen and (min-width: 768px) {
     .content {
         flex-direction: row;

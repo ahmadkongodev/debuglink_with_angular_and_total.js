@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,33 +9,34 @@ import { Router } from '@angular/router';
 import { Link } from '../../models/link';
 import { DebuglinkService } from '../../service/debuglink.service';
 
- 
-
 @Component({
-    selector: 'app-main-page',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.css'],
-    standalone: true,
-    imports: [CommonModule, FormsModule,MatIconModule, LinkFormComponent, SidenavComponent]
+  selector: 'app-main-page',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatIconModule, LinkFormComponent, SidenavComponent]
 })
+export class MainPageComponent implements OnInit {
 
-export class MainPageComponent {
-
-  constructor( private service: DebuglinkService, private router: Router){}
-  menuOpen = false;
-  searchTerm= '';
+  searchTerm = '';
   isMenuOpen = false;
   isFormOpen = false;
   links: any[] = [];
 
-  ngOnInit(){
-    //recuperer les informations lors de l'initialisation du composant
+  constructor(private service: DebuglinkService, private router: Router) { }
+
+  ngOnInit() {
     this.getLinks();
   }
-   
-  closemenu() {
-    this.menuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
   openLinkForm() {
     this.isFormOpen = true;
   }
@@ -45,36 +45,36 @@ export class MainPageComponent {
     this.isFormOpen = false;
   }
 
-  getLinks(){
+  getLinks() {
     this.service.getAllLinks().subscribe((res: any) => {
-      if (res) { 
-        this.links=res;
-        
-       }
-      else {
-        alert("erreur")
-        alert(res[0]["error"])
+      if (res) {
+        this.links = res;
+      } else {
+        alert("erreur");
+        alert(res[0]["error"]);
       }
-    }); 
+    });
   }
 
-  search( ){
+  search() {
     this.service.searchLinks(this.searchTerm).subscribe((res: any) => {
-      if (res) { 
-        this.links=res;
-        console.log("found")
-       }
-      else {
-        alert("erreur")
-        alert(res[0]["error"])
+      if (res) {
+        this.links = res;
+        console.log("found");
+      } else {
+        alert("erreur");
+        alert(res[0]["error"]);
       }
-    }); 
+    });
   }
+
   goToAbout() {
     this.router.navigate(['/about']);
+    this.closeMenu();
   }
+
   goToProfil() {
     this.router.navigate(['/profil']);
+    this.closeMenu();
   }
-  
 }

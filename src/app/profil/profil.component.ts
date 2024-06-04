@@ -44,6 +44,12 @@ export class ProfilComponent {
 
     })
   }
+  confirm(){
+    if(confirm("Voulez-vous vraiment vous deconnecter?")){
+      this.logout();
+    }
+    
+  }
   logout() {
     //
     this.service.logout().subscribe((res: any) => {
@@ -58,4 +64,11 @@ export class ProfilComponent {
   }
 
 
+  goToAbout() {
+    this.router.navigate(['/about']);
+   }
+
+   goToHome() {
+    this.router.navigate(['/main']);
+   }
 }

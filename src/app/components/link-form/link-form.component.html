@@ -1,5 +1,6 @@
 <div class="modal-backdrop" (click)="closeForm()"></div>
 <div class="modal-content">
+  <span class="close-button" (click)="closeForm()">X</span>
   <h2>Link creation form</h2>
   <form  [formGroup]="linkValidator" (ngSubmit)="createLink()">
     <div class="form-group">
@@ -8,37 +9,36 @@
         <div *ngIf="linkValidator.get('name')?.errors && linkValidator.get('name')?.touched">
           <div *ngIf="linkValidator.get('name')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
           <div *ngIf="linkValidator.get('name')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
-      </div>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input type="url" formControlName="link" name="link" placeholder=" Link URL" required />
-         <div *ngIf="linkValidator.get('link')?.errors && linkValidator.get('link')?.touched">
+        <input type="url" formControlName="link" name="link" placeholder="Link URL" required />
+        <div *ngIf="linkValidator.get('link')?.errors && linkValidator.get('link')?.touched">
           <div *ngIf="linkValidator.get('link')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
           <div *ngIf="linkValidator.get('link')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
-      </div>
+        </div>
       </div>
     </div>
-    
     <div class="form-group">
       <div>
         <input type="text" formControlName="category" name="category" placeholder="Link category" required />
-         <div *ngIf="linkValidator.get('category')?.errors && linkValidator.get('category')?.touched">
+        <div *ngIf="linkValidator.get('category')?.errors && linkValidator.get('category')?.touched">
           <div *ngIf="linkValidator.get('category')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
           <div *ngIf="linkValidator.get('category')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
-      </div>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <div>
         <input type="text" name="hashtags" formControlName="hashtags" placeholder="Link hashtags" required />
-         <div *ngIf="linkValidator.get('hashtags')?.errors && linkValidator.get('hashtags')?.touched">
+        <div *ngIf="linkValidator.get('hashtags')?.errors && linkValidator.get('hashtags')?.touched">
           <div *ngIf="linkValidator.get('hashtags')?.hasError('required')" class="verification">Nom d'utilisateur requis</div>
           <div *ngIf="linkValidator.get('hashtags')?.hasError('minlength')" class="verification">Nom d'utilisateur trop court</div>
-      </div>
+        </div>
       </div>
     </div>
-    <button  type="submit" >Create</button>
+    <button type="submit">Create</button>
   </form>
 </div>

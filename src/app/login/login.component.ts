@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DebuglinkService } from '../service/debuglink.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -16,7 +17,7 @@ export class LoginComponent {
   imageUrl: string | ArrayBuffer | null = null;
   usernamePasswordForm: FormGroup;
   showPassword = false;
-  constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private toast: ToastrService, private service: DebuglinkService) {
     this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       
@@ -37,13 +38,12 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.usernamePasswordForm.valid) {
-      // Faites quelque chose avec les données du formulaire
-      console.log(this.usernamePasswordForm.value);
+      this.login();
 
       
     } else {
       // Gérer les cas d'erreur ou les champs non valides
-      alert("Le formulaire n'est pas valide.");
+       this.toast.error("Le formulaire n'est pas valide.","erreur")
     }
     
   }

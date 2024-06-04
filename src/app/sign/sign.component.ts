@@ -28,8 +28,7 @@ export class SignComponent {
   onSubmit() {
     if (this.usernamePasswordForm.valid) {
       // Faites quelque chose avec les données du formulaire
-
-      console.log(this.usernamePasswordForm.value);
+      this.signIn(); 
     } else {
       // Gérer les cas d'erreur ou les champs non valides
       console.log("Le formulaire n'est pas valide.");
@@ -49,17 +48,15 @@ export class SignComponent {
 
 
   signIn() {
-    this.service.onSignIn(this.usernamePasswordForm.value).subscribe((res: any) => {
-      if (res.success) {
-
-        localStorage.setItem('token', res.value);
-        console.log('token:',localStorage.getItem('token'));
-        
-        this.router.navigate(['/main']);
+    this.service.onSignIn(this.usernamePasswordForm.value).subscribe(  (res: any) => {
+      if (res.success)  {
+ 
+        this.toast.success("compte creer avec success, veuillez vous connecter", "success");
+        this.router.navigate(['/login']);
 
       }
       else {
-        this.toast.error("an error occured");
+        this.toast.error("an error occured","erreur");
       }
     });
   }

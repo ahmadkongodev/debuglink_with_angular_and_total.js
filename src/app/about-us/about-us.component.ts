@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,4 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
     styleUrls: ['./about-us.component.css'],
     imports: [MatIconModule,]
 })
-export class AboutUsComponent {}
+export class AboutUsComponent {
+    constructor(private router:Router){}
+  goToProfil() {
+    this.router.navigate(['/profil']);
+   }
+
+   goToHome() {
+    this.router.navigate(['/main']);
+   }
+}

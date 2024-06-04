@@ -1,38 +1,69 @@
-
-   <div class="container">
-    <header>
-       <ul class="men">
-        <li (click)="goToProfil()">Profil</li>
-        <li (click)="goToAbout()">About  </li>
-        <li class="active">Home</li>
-      </ul>
-      <div class="profile-pic"> <!-- Ajoute ici l'image de profil --> </div>
-    </header>
-    <main>
-      <div class="search-create">
-        <input type="text" [(ngModel)]="searchTerm" (keypress)="search()" placeholder="search by name or category............" />
-        <button (click)="openLinkForm()">Create link</button>
+<div class="container">
+  <header>
+    <!-- <div class="menu-icon" (click)="toggleMenu()">&#9776;</div>
+    <ul class="men" [class.active]="isMenuOpen">
+      <li (click)="goToProfil()">Profil</li>
+      <li (click)="goToAbout()">About</li>
+      <li class="active">Home</li>
+    </ul>
+    <div class="profile-pic">
+      <img src="url_de_votre_image" alt="Profile Picture" class="profile-pic">
+    </div> -->
+    <nav>
+      <input type="checkbox" id="sidebar-active">
+      <label for="sidebar-active" class="open-sidebar-button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+      </label>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </label>
+  
+        <a class="active" >Home</a> 
+        
+        <a (click)="goToAbout()">About</a> 
+        <a (click)="goToProfil()">Profil</a> 
+        
+        
       </div>
+    </nav>
+  </header>
+  
+
+  <main>
+    <div class="search-create">
+      <input type="text" [(ngModel)]="searchTerm" (keypress)="search()" placeholder="search by name or category............" />
+      <button (click)="openLinkForm()">Create link</button>
+    </div>
+    <div class="table-responsive">
       <table>
         <thead>
           <tr>
-           
             <th>Name</th>
             <th>Category</th>
-             <th>Hashtags</th>
-           </tr>
+            <th>Hashtags</th>
+          </tr>
         </thead>
         <tbody>
           <tr *ngFor="let link of links">
-              <td > <a href= "{{ link.link}}" target="_blank"> {{ link.name }}</a></td>
-            <td> <a href="{{ link.link}}" target="_blank"> {{ link.category }}</a> </td>
-            <td> <a href="{{ link.link}}" target="_blank"> {{ link.hashtags }}</a> </td>
-             
+            <td><a href="{{ link.link }}" class="custom-link" target="_blank">{{ link.name }}</a></td>
+            <td><a href="{{ link.link }}" class="custom-link" target="_blank">{{ link.category }}</a></td>
+            <td><a href="{{ link.link }}" class="custom-link" target="_blank">{{ link.hashtags }}</a></td>
+            
           </tr>
         </tbody>
       </table>
-    </main>
-  </div>
-  <app-side-menu *ngIf="isMenuOpen"></app-side-menu>
-  <app-link-form *ngIf="isFormOpen" (formClosed)="closeLinkForm()"></app-link-form>
-  
+    </div>
+  </main>
+</div>
+<app-side-menu *ngIf="isMenuOpen" class="side-menu open">
+  <button class="close-menu" (click)="closeMenu()">&#10006;</button>
+  <ul>
+    <li (click)="goToProfil()">Profil</li>
+    <li (click)="goToAbout()">About</li>
+    <li class="active">Home</li>
+  </ul>
+</app-side-menu>
+
+<app-link-form *ngIf="isFormOpen" (formClosed)="closeLinkForm()"></app-link-form>
