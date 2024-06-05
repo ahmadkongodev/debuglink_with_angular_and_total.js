@@ -19,7 +19,7 @@
         </div>
         <!-- email-password-form.component.html -->
     
-        <form [formGroup]="usernamePasswordForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="usernamePasswordForm">
             <div class="content">
 
                 <div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="formbutton">
-                <button  class="firstB" (click)="login()">Soumettre</button>
+                <button  class="firstB" (click)="onSubmit()">Soumettre</button>
                 <p>or connect with</p>
                 <div class="connectPart">
                     <button><i class="material-icons">mail</i></button>

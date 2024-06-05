@@ -16,7 +16,7 @@
             </div>
             <p>S'inscrire</p>
         </div>
-        <form [formGroup]="usernamePasswordForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="usernamePasswordForm"  >
             <div class="contentOne">
                 <div>
                     <label for="username"></label>
@@ -55,7 +55,7 @@
             </div>
             
             <div class="formbutton">
-                <button (click)="signIn()"  class="firstB">Soumettre</button>
+                <button (click)="onSubmit()"  class="firstB">Soumettre</button>
                 <p>or connect with</p>
                 <div class="connectPart">
                     <button><i class="material-icons">mail</i></button>

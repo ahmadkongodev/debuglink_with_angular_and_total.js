@@ -49,7 +49,7 @@ export class LoginComponent {
   }
 
   login() {
-     
+     debugger
     this.service.onLogin(this.usernamePasswordForm.value).subscribe((res: any) => {
       if (res.success) { 
         localStorage.setItem('token', res.value);

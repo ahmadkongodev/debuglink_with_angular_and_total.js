@@ -32,7 +32,7 @@ export class SignComponent {
       this.signIn(); 
     } else {
       // Gérer les cas d'erreur ou les champs non valides
-      console.log("Le formulaire n'est pas valide.");
+      this.toast.error("Le formulaire n'est pas valide.","erreur")
     }
   }
 
