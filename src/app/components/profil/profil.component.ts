@@ -3,7 +3,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
  import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DebuglinkService } from '../service/debuglink.service';
+import { DebuglinkService } from '../../service/debuglink.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmodalComponent } from '../confirmodal/confirmodal.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { DebuglinkService } from '../service/debuglink.service';
 export class ProfilComponent {
   imageUrl: string | ArrayBuffer | null = null;
   public getUsername: any;
-  constructor(private router: Router, private service: DebuglinkService) {
+  constructor(private router: Router, private dialog: MatDialog, private service: DebuglinkService) {
 
   }
 
@@ -44,24 +46,12 @@ export class ProfilComponent {
 
     })
   }
-  confirm(){
-    if(confirm("Voulez-vous vraiment vous deconnecter?")){
-      this.logout();
-    }
+  showConfirm(){
+
+    this.dialog.open(ConfirmodalComponent);
     
   }
-  logout() {
-    //
-    this.service.logout().subscribe((res: any) => {
-      console.log("logout", res)
-      if (res.success) {
-        //supprimer token au logout
-        localStorage.removeItem('token');
-        console.log('token:', localStorage.getItem('token'));
-        this.router.navigate(['/login']);
-      }
-    })
-  }
+  
 
 
   goToAbout() {

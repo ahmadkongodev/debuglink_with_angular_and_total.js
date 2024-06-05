@@ -19,7 +19,7 @@
         </div>
         <!-- email-password-form.component.html -->
     
-        <form [formGroup]="usernamePasswordForm" >
+        <form [formGroup]="usernamePasswordForm" (ngSubmit)="onSubmit()">
             <div class="content">
 
                 <div>
@@ -31,19 +31,19 @@
                     </div>
                 </div>
     
-                <div>
+                <div class="password-container">
                     <label for="password"></label>
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
                     <mat-icon class="eye-icon" (click)="togglePasswordVisibility()">
                         {{ showPassword ? 'visibility_off' : 'visibility' }}
                     </mat-icon>
-                     <div *ngIf="usernamePasswordForm.get('password')?.errors && usernamePasswordForm.get('password')?.touched">
+                    <div *ngIf="usernamePasswordForm.get('password')?.errors && usernamePasswordForm.get('password')?.touched">
                         <div *ngIf="usernamePasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
                     </div>
                 </div>
             </div>
             <div class="formbutton">
-                <button  class="firstB" (click)="onSubmit()">Soumettre</button>
+                <button  class="firstB" (click)="login()">Soumettre</button>
                 <p>or connect with</p>
                 <div class="connectPart">
                     <button><i class="material-icons">mail</i></button>

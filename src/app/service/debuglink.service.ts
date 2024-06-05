@@ -38,14 +38,14 @@ export class DebuglinkService {
   getAllLinks(){
     return this.http.get(Constants.linksbaseUrl)
   }
+  //recherche d'un lien
   searchLinks(search: string){
     return this.http.get(`${Constants.linksbaseUrl}/?search=${search}`)
 
   }
+  //insertion de lien
   insertLink(link: Link){
     return this.http.post(Constants.linksbaseUrl,link)
 
   }
-
-   //il faut empecher qu'on puisse naviguer a travers le site a laide de l'url
-}
+} 

@@ -16,7 +16,7 @@
             </div>
             <p>S'inscrire</p>
         </div>
-        <form [formGroup]="usernamePasswordForm" >
+        <form [formGroup]="usernamePasswordForm" (ngSubmit)="onSubmit()">
             <div class="contentOne">
                 <div>
                     <label for="username"></label>
@@ -27,19 +27,22 @@
                     </div>
                 </div>
     
-                <div>
+                <div class="password-container">
                     <label for="password"></label>
                     <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Entrez votre mot de passe">
-                    <mat-icon class="eye-icon" (click)="togglePasswordVisibility()">
+                    <mat-icon class="eye-icon" (click)="togglePasswordVisibilit()">
                         {{ showPassword ? 'visibility_off' : 'visibility' }}
                     </mat-icon>
-                      <div *ngIf="usernamePasswordForm.get('password')?.errors && usernamePasswordForm.get('password')?.touched">
+                    <div *ngIf="usernamePasswordForm.get('password')?.errors && usernamePasswordForm.get('password')?.touched">
                         <div *ngIf="usernamePasswordForm.get('password')?.hasError('required')" class="verification">Mot de passe requis</div>
                     </div>
                 </div>
-                <div>
+                <div class="password-container">
                     <label for="confirm"></label>
-                    <input type="password" id="confirm" formControlName="confirm" placeholder="confirmer votre mot de passe">
+                    <input [type]="showConfirm ? 'text' : 'password'" id="confirm" formControlName="confirm" placeholder="confirmer votre mot de passe">
+                    <mat-icon class="eye-icon" (click)="togglePasswordVisibility()">
+                        {{ showConfirm ? 'visibility_off' : 'visibility' }}
+                    </mat-icon>
                     <div *ngIf="usernamePasswordForm.get('confirm')?.errors && usernamePasswordForm.get('confirm')?.touched">
                         <div *ngIf="usernamePasswordForm.get('confirm')?.hasError('required')" class="verification">Mot de passe de confirmation requis</div>
                     </div>
@@ -52,14 +55,14 @@
             </div>
             
             <div class="formbutton">
-                <button (click)="onSubmit()"  class="firstB">Soumettre</button>
+                <button (click)="signIn()"  class="firstB">Soumettre</button>
                 <p>or connect with</p>
                 <div class="connectPart">
                     <button><i class="material-icons">mail</i></button>
                     <button><i class="material-icons">facebook</i></button>
                     
                 </div>
-                <p> <i> i don't have an account <span (click)="goToLogin()">Login</span></i></p>
+                <p> <i> already have an account <span (click)="goToLogin()">Login</span></i></p>
             </div>
         </form>
     </main>

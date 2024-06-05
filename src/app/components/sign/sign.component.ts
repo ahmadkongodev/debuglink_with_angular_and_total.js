@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DebuglinkService } from '../service/debuglink.service'; 
+import { DebuglinkService } from '../../service/debuglink.service'; 
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,6 +17,7 @@ export class SignComponent {
   imageUrl: string | ArrayBuffer | null = null;
   usernamePasswordForm: FormGroup;
   showPassword = false;
+  showConfirm = false;
   constructor(private router: Router, private formBuilder: FormBuilder, private service: DebuglinkService, private toast: ToastrService) {
     this.usernamePasswordForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -65,6 +66,9 @@ export class SignComponent {
     this.router.navigate(['/login']);
   }
   togglePasswordVisibility() {
+    this.showConfirm = !this.showConfirm;
+  }
+  togglePasswordVisibilit() {
     this.showPassword = !this.showPassword;
   }
 }
